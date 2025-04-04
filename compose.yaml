@@ -1,0 +1,11 @@
+version: "0.5"
+
+processes:
+  hello:
+    command: while true; do :; done
+
+  pc:
+    command: while true; do :; done
+    depends_on:
+      hello:
+        condition: process_completed
