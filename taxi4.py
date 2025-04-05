@@ -7,11 +7,37 @@ import tempfile
 import stat
 
 
+def venv_type(*, pkgs, cmd, python=None):
+    yield "uv"
+    yield "run"
+    yield "--no-project"
+    if python:
+        yield "--python"
+        yield python
+    pkgs = [i for i in pkgs.splitlines() if i]
+    for pkg in pkgs:
+        yield "--with"
+        yield pkg
+    yield "--"
+    yield from shlex.split(cmd)
+
+
+def script_type(*, source):
+    with tempfile.NamedTemporaryFile(mode="w", delete=False) as temp_file:
+        temp_file.write(source)
+    os.chmod(temp_file.name, stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
+    yield temp_file.name
+
+
+def cmd_type(*, cmd):
+    yield from shlex.split(cmd)
+
+
 def create_docker_type(*, image, image_port, env_prefix=None):
     def docker_type(*, version=None, port=image_port, **rest):
         yield "docker"
         yield "run"
-        yield "-ti"
+        # yield "-ti"
         if port:
             yield "-p"
             yield f"{image_port}:{port}"
@@ -29,29 +55,39 @@ def create_docker_type(*, image, image_port, env_prefix=None):
     return docker_type
 
 
-def venv_type(*, packages, cmd, python=None):
-    yield "uv"
-    yield "run"
-    yield "--no-project"
-    if python:
-        yield "--python"
-        yield python
-    packages = [i for i in packages.splitlines() if i]
-    for package in packages:
-        yield "--with"
-        yield package
-    yield "--"
-    yield from shlex.split(cmd)
+def nix_type(*, pkgs, cmd):
+    yield "nix-shell"
+    yield "--packages"
+    yield from [i for i in pkgs.splitlines() if i]
+    yield "--run"
+    yield cmd
 
 
-def script_type(*, source):
+def raw_type(**kw):
+    yield kw
+
+
+def process_compose_type(*, processes):
+    import json
+
+    processes = [i for i in processes.splitlines() if i]
+    config = {"version": "0.5", "processes": {}}
+    for service in processes:
+        cmd = get_command(service)
+        config["processes"][service] = {"command": shlex.join(cmd)}
+    source = json.dumps(config)
     with tempfile.NamedTemporaryFile(mode="w", delete=False) as temp_file:
         temp_file.write(source)
-    os.chmod(temp_file.name, stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
+    yield "process-compose"
+    yield "--config"
     yield temp_file.name
 
 
 types = {
+    "process-compose": process_compose_type,
+    "raw": raw_type,
+    "nix": nix_type,
+    "cmd": cmd_type,
     "script": script_type,
     "venv": venv_type,
     "postgres": create_docker_type(
@@ -71,24 +107,23 @@ types = {
 }
 
 
-config = configparser.ConfigParser()
+config = configparser.ConfigParser(
+    interpolation=configparser.ExtendedInterpolation(),
+    # allow_no_value=True,
+)
 
-config.read("taxi.hcl")
 
+def get_command(name):
+    section = config[name]
+    section = dict(section)
+    type_ = section.pop("type")
+    handler = types[type_]
+    cmd = handler(**section)
+    return list(cmd)
+
+
+config.read("taxi.ini")
 run = sys.argv[1]
-
-
-# for section in config.sections():
-#     print(section)
-#     breakpoint()
-
-section = config[sys.argv[1]]
-section = dict(section)
-type_ = section.pop("type")
-handler = types[type_]
-cmd = handler(**section)
-cmd = list(cmd)
-
-
+cmd = get_command(run)
 print(cmd)
 subprocess.call(cmd)

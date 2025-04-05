@@ -31,7 +31,18 @@ type=script
 source=#!/bin/sh
   echo hello world
 
+[test2]
+type=cmd
+cmd=ls
+
 [app]
 type=plash
 from=alpine:edge
 run=apk update
+
+
+[test3]
+type=nix
+packages=
+  cowsay
+cmd=cowsay hi
