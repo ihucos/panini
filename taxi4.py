@@ -7,7 +7,7 @@ import tempfile
 import stat
 
 
-def venv_mode(*, venv, pkgs, cmd, python=None):
+def venv_driver(*, venv, pkgs, cmd, python=None):
     assert venv is None
     yield "uv"
     yield "run"
@@ -23,19 +23,19 @@ def venv_mode(*, venv, pkgs, cmd, python=None):
     yield from shlex.split(cmd)
 
 
-def script_mode(*, script):
+def script_driver(*, script):
     with tempfile.NamedTemporaryFile(mode="w", delete=False) as temp_file:
         temp_file.write(script)
     os.chmod(temp_file.name, stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
     yield temp_file.name
 
 
-def cmd_mode(*, cmd):
+def cmd_driver(*, cmd):
     yield from shlex.split(cmd)
 
 
-def create_docker_mode(*, image, image_port, env_prefix=None):
-    def docker_mode(*, version=None, port=image_port, **rest):
+def create_docker_driver(*, image, image_port, env_prefix=None):
+    def docker_driver(*, version=None, port=image_port, **rest):
         version = rest.get(image) or "latest"
         yield "docker"
         yield "run"
@@ -51,10 +51,10 @@ def create_docker_mode(*, image, image_port, env_prefix=None):
 
         yield f"{image}:{version}"
 
-    return docker_mode
+    return docker_driver
 
 
-def nix_mode(*, nix, pkgs, cmd):
+def nix_driver(*, nix, pkgs, cmd):
     assert nix is None
     yield "nix-shell"
     yield "--packages"
@@ -63,11 +63,11 @@ def nix_mode(*, nix, pkgs, cmd):
     yield cmd
 
 
-def raw_mode(**kw):
+def raw_driver(**kw):
     yield kw
 
 
-def list_mode(*, list=None):
+def list_driver(*, list=None):
     if list is None:
         list = [section for section in config if section not in ("list", "DEFAULT")]
     else:
@@ -78,7 +78,7 @@ def list_mode(*, list=None):
     yield "true"
 
 
-def services_mode(*, services):
+def services_driver(*, services):
     import json
 
     services = [i for i in services.splitlines() if i]
@@ -94,25 +94,25 @@ def services_mode(*, services):
     yield temp_file.name
 
 
-modes = {
-    "services": services_mode,
-    "raw": raw_mode,
-    "list": list_mode,
-    "nix": nix_mode,
-    "cmd": cmd_mode,
-    "script": script_mode,
-    "venv": venv_mode,
-    "postgres": create_docker_mode(
+drivers = {
+    "services": services_driver,
+    "raw": raw_driver,
+    "list": list_driver,
+    "nix": nix_driver,
+    "cmd": cmd_driver,
+    "script": script_driver,
+    "venv": venv_driver,
+    "postgres": create_docker_driver(
         image_port=5432,
         image="postgres",
         env_prefix="POSTGRES_",
     ),
-    "mysql": create_docker_mode(
+    "mysql": create_docker_driver(
         image_port=3306,
         image="mysql",
         env_prefix="MYSQL_",
     ),
-    "redis": create_docker_mode(
+    "redis": create_docker_driver(
         image_port=6379,
         image="redis",
     ),
@@ -125,22 +125,22 @@ config = configparser.ConfigParser(
 )
 
 
-def infer_mode(section_name, section):
-    mode = section.get("mode", None)
+def infer_driver_name(section_name, section):
     if not section:
         return section_name
-    if not mode:
-        return next(iter(section.keys()))
-    return mode
+    return next(iter(section.keys()))
 
 
 def get_command(name):
     section = config[name]
     section = dict(section)
-    mode = infer_mode(name, section)
-    section.pop("mode", None)
-    handler = modes[mode]
+    driver = infer_driver_name(name, section)
+    section.pop("driver", None)
+    handler = drivers[driver]
+    # try:
     cmd = handler(**section)
+    # except TypeError as exc:
+    #     breakpoint()
     return list(cmd)
 
 
