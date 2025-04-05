@@ -54,9 +54,6 @@ def _docker(*, version="latest", image, image_port, user_port, envs):
     yield f"{image}:{version}"
 
 
-# return docker
-
-
 @register
 def postgres(*, postgres, port=None, user=None, password=None, db=None, lang=None):
     return _docker(
@@ -117,7 +114,9 @@ def raw(**kw):
 @register
 def list(*, list=None):
     if list is None:
-        list = [section for section in config if section not in ("list", "DEFAULT")]
+        list = [
+            section for section in get_config() if section not in ("list", "DEFAULT")
+        ]
     else:
         list = [i for i in list.splitlines() if i]
     for task in list:
