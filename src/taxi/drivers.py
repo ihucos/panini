@@ -6,7 +6,7 @@ from .utils import get_config, get_command, register, get_command2, TaskError
 
 
 @register
-def venv(*, venv, cmd, python=None):
+def venv(_, *, venv, cmd, python=None):
     yield "uv"
     yield "run"
     yield "--no-project"
@@ -22,7 +22,7 @@ def venv(*, venv, cmd, python=None):
 
 
 @register
-def script(*, script):
+def script(_, *, script):
     with tempfile.NamedTemporaryFile(mode="w", delete=False) as temp_file:
         temp_file.write(script)
     os.chmod(temp_file.name, stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
@@ -30,7 +30,7 @@ def script(*, script):
 
 
 @register
-def cmd(*, cmd):
+def cmd(_, *, cmd):
     yield from shlex.split(cmd)
 
 
@@ -54,7 +54,7 @@ def _docker(*, version="latest", image, image_port, user_port, envs):
 
 
 @register
-def postgres(*, postgres, port=None, user=None, password=None, db=None, lang=None):
+def postgres(_, *, postgres, port=None, user=None, password=None, db=None, lang=None):
     return _docker(
         version=postgres,
         user_port=port,
@@ -70,7 +70,7 @@ def postgres(*, postgres, port=None, user=None, password=None, db=None, lang=Non
 
 
 @register
-def mysql(*, mysql, port=None, user=None, password=None, db=None, lang=None):
+def mysql(_, *, mysql, port=None, user=None, password=None, db=None, lang=None):
     return _docker(
         version=mysql,
         user_port=port,
@@ -85,7 +85,7 @@ def mysql(*, mysql, port=None, user=None, password=None, db=None, lang=None):
 
 
 @register
-def redis(*, redis, port=None):
+def redis(_, *, redis, port=None):
     return _docker(
         version=redis,
         user_port=port,
@@ -96,7 +96,7 @@ def redis(*, redis, port=None):
 
 
 @register
-def nix(*, nix, cmd):
+def nix(_, *, nix, cmd):
     yield "nix-shell"
     yield "--packages"
     yield from [i for i in nix.splitlines() if i]
@@ -105,21 +105,33 @@ def nix(*, nix, cmd):
 
 
 @register
-def raw(**kw):
+def raw(_, **kw):
     yield kw
 
 
 @register
-def use(use, **kw):
+def use(section_name, *, use, **kw):
     try:
         use = dict(get_config()[use])
     except KeyError:
         raise TaskError(f"use: no such task: {use}")
-    return get_command2("dummydummy", dict(use, **kw))
+    return get_command2(section_name, dict(use, **kw))
 
 
 @register
-def list(*, list=None):
+def assert_(section_name, **kw):
+    assert_ = kw.pop("assert")
+    cmd = get_command2(section_name, kw)
+    cmd_str = shlex.join(cmd)
+    if cmd_str != assert_:
+        raise TaskError(
+            f"assert failed at {section_name}:\nexpected: {assert_}\nactual:   {cmd_str}"
+        )
+    yield "true"
+
+
+@register
+def list(_, *, list=None):
     if list is None:
         list = [
             section for section in get_config() if section not in ("list", "DEFAULT")
@@ -135,7 +147,7 @@ def list(*, list=None):
 
 
 @register
-def services(*, services):
+def services(_, *, services):
     import json
 
     services = [i for i in services.splitlines() if i]

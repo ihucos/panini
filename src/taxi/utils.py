@@ -1,4 +1,5 @@
 import configparser
+import os
 
 
 class TaskError(Exception):
@@ -33,7 +34,7 @@ def get_command2(name, section):
     if section == {}:
         section = {name: None}
     try:
-        cmd = handler(**section)
+        cmd = handler(name, **section)
     except TypeError as exc:
         # Make error message less pythonic and more INI
         msg = (
@@ -60,7 +61,8 @@ def init_config():
         interpolation=configparser.ExtendedInterpolation(),
         allow_no_value=True,
     )
-    _config.read("taxi.ini")
+    config_file = os.environ.get("TAXI_CONFIG", "taxi.ini")
+    _config.read(config_file)
 
 
 def get_config():
@@ -72,7 +74,7 @@ _drivers = {}
 
 
 def register(func):
-    _drivers[func.__name__] = func
+    _drivers[func.__name__.rstrip("_")] = func
     return func
 
 
