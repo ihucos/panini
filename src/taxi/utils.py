@@ -13,12 +13,16 @@ def infer_driver_name(section_name, section):
 
 def get_command(name):
     config = get_config()
-    drivers = get_drivers()
     try:
         section = config[name]
     except KeyError:
         raise TaskError(f"no such task: {name}")
-    section = dict(section)
+    return get_command2(name, dict(section))
+
+
+def get_command2(name, section):
+    drivers = get_drivers()
+
     driver = infer_driver_name(name, section)
     section.pop("driver", None)
     try:

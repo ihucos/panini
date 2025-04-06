@@ -2,19 +2,18 @@ import shlex
 import os
 import tempfile
 import stat
-from .utils import get_config, get_command, register
+from .utils import get_config, get_command, register, get_command2, TaskError
 
 
 @register
-def venv(*, venv, pkgs, cmd, python=None):
-    assert venv is None
+def venv(*, venv, cmd, python=None):
     yield "uv"
     yield "run"
     yield "--no-project"
     if python:
         yield "--python"
         yield python
-    pkgs = [i for i in pkgs.splitlines() if i]
+    pkgs = [i for i in venv.splitlines() if i]
     for pkg in pkgs:
         yield "--with"
         yield pkg
@@ -97,11 +96,10 @@ def redis(*, redis, port=None):
 
 
 @register
-def nix(*, nix, pkgs, cmd):
-    assert nix is None
+def nix(*, nix, cmd):
     yield "nix-shell"
     yield "--packages"
-    yield from [i for i in pkgs.splitlines() if i]
+    yield from [i for i in nix.splitlines() if i]
     yield "--run"
     yield cmd
 
@@ -112,6 +110,15 @@ def raw(**kw):
 
 
 @register
+def use(use, **kw):
+    try:
+        use = dict(get_config()[use])
+    except KeyError:
+        raise TaskError(f"use: no such task: {use}")
+    return get_command2("dummydummy", dict(use, **kw))
+
+
+@register
 def list(*, list=None):
     if list is None:
         list = [
@@ -119,10 +126,12 @@ def list(*, list=None):
         ]
     else:
         list = [i for i in list.splitlines() if i]
+    help = []
     for task in list:
         cmd = shlex.join(get_command(task))
-        print(f"{task:16}{cmd}")
-    yield "true"
+        help.append(f"{task:16}{cmd}")
+    yield "printf"
+    yield "\n".join(help)
 
 
 @register
