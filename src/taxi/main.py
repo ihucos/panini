@@ -2,7 +2,7 @@ import sys
 import subprocess
 import configparser
 
-from .utils import get_config, get_command, TaskError
+from .utils import get_config, get_command, TaskError, init_config
 from . import drivers as _
 
 
@@ -20,6 +20,7 @@ def main():
         sys.exit(1)
 
     try:
+        init_config()
         validate_all_sections()
         cmd = get_command(run)
     except TaskError as exc:

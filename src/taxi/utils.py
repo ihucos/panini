@@ -54,17 +54,18 @@ def get_command2(name, section):
 _config = None
 
 
-def get_config():
+def init_config():
     global _config
-    if _config is not None:
-        return _config
-    config = configparser.ConfigParser(
+    _config = configparser.ConfigParser(
         interpolation=configparser.ExtendedInterpolation(),
         allow_no_value=True,
     )
-    config.read("taxi.ini")
-    _config = config
-    return config
+    _config.read("taxi.ini")
+
+
+def get_config():
+    assert _config, "call init_config()"
+    return _config
 
 
 _drivers = {}
