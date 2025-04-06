@@ -1,8 +1,8 @@
 import sys
 import subprocess
 
-from utils import get_config, get_command, TaskError
-import drivers
+from .utils import get_config, get_command, TaskError
+from . import drivers as _
 
 
 def main():
