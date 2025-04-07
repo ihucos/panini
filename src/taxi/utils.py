@@ -74,7 +74,7 @@ def get_command2(name, section, args):
         cmd = list(addenv(cmd, env))
 
     if via:
-        return get_command(via, list(cmd))
+        cmd = get_command(via, list(cmd))
 
     return list(cmd)
 

@@ -141,15 +141,36 @@ def use(ctx, *, use, **kw):
 
 
 @register
-def assert_(ctx, **kw):
-    assert_ = kw.pop("assert")
-    cmd = get_command2(ctx["section_name"], kw, ctx["args"])
+def assert_cmd(ctx, **kw):
+    assert_cmd = kw.pop("assert_cmd")
+    try:
+        cmd = get_command2(ctx["section_name"], kw, ctx["args"])
+    except TaskError as exc:
+        assert 0, exc.args[0]
     cmd_str = shlex.join(cmd)
-    if cmd_str != assert_:
+    if cmd_str != assert_cmd:
         raise TaskError(
-            f"assert failed at {ctx['section_name']}:\nexpected: {assert_}\nactual:   {cmd_str}"
+            f"assert failed at {ctx['section_name']}:\nexpected: {assert_cmd}\nactual:   {cmd_str}"
         )
     yield "true"
+
+
+@register
+def assert_err(ctx, **kw):
+    assert_err = kw.pop("assert_err")
+    try:
+        get_command2(ctx["section_name"], kw, ctx["args"])
+    except TaskError as exc:
+        if assert_err.upper() not in exc.args[0].upper():
+            raise TaskError(
+                (
+                    f"{ctx['section_name']}: assert failed - "
+                    f"{repr(assert_err)} not in {repr(exc.args[0])}"
+                )
+            )
+        yield "true"
+    else:
+        raise TaskError(f"{ctx['section_name']}: assert failed - no error")
 
 
 @register
