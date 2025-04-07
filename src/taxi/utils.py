@@ -40,12 +40,13 @@ def get_command2(name, section, args):
 
     driver = infer_driver_name(name, section)
     section.pop("driver", None)
-    via = section.pop("via", None)
 
     if driver not in ["assert_cmd"]:  # HACK
         env = section.pop("env", None)
+        via = section.pop("via", None)
     else:
         env = ""
+        via = ""
     # if via:
     #     via_cmd = get_command(via, [])
     #     assert 0, via_cmd
