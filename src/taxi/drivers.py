@@ -110,6 +110,11 @@ def raw(_, **kw):
 
 
 @register
+def noop(_, noop):
+    yield "true"
+
+
+@register
 def use(section_name, *, use, **kw):
     try:
         use = dict(get_config()[use])
