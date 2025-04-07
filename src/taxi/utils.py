@@ -22,12 +22,26 @@ def get_command(name, args):
     return get_command2(name, dict(section), args)
 
 
+def addenv(cmd, env):
+    cmd = list(cmd)
+    env = [i for i in env.splitlines() if i]
+    if env:
+        yield "env"
+        for e in env:
+            if "=" not in e:
+                raise TaskError(f"Not an env (Missing a =): {e}")
+            yield e
+
+    yield from cmd
+
+
 def get_command2(name, section, args):
     drivers = get_drivers()
 
     driver = infer_driver_name(name, section)
     section.pop("driver", None)
     via = section.pop("via", None)
+    env = section.pop("env", None)
     # if via:
     #     via_cmd = get_command(via, [])
     #     assert 0, via_cmd
@@ -55,6 +69,9 @@ def get_command2(name, section, args):
             )
         )
         raise TaskError(f"section {name}: driver {msg}")
+
+    if env:
+        cmd = list(addenv(cmd, env))
 
     if via:
         return get_command(via, list(cmd))

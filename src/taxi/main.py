@@ -9,7 +9,7 @@ from . import drivers as _
 def validate_all_sections():
     for section in get_config():
         if section != "DEFAULT":
-            get_command(section, ["true"])
+            get_command(section, [])
 
 
 def main():

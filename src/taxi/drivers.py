@@ -5,16 +5,6 @@ import stat
 from .utils import get_config, get_command, register, get_command2, TaskError
 
 
-def addenv(cmd, env):
-    env = [i for i in env.splitlines() if i]
-    if not env:
-        return cmd
-    for e in env:
-        if "=" not in e:
-            raise TaskError(f"Not an env (Missing a =): {e}")
-    return f"env {' '.join(env)} {cmd}"
-
-
 def addargs(cmd, args):
     if args and not "{}" in cmd:
         raise TaskError(f"got argvs ({args}) but cmd (`{cmd}`) does not accept them")
@@ -22,8 +12,7 @@ def addargs(cmd, args):
 
 
 @register
-def venv(ctx, *, venv, cmd, env="", python=None):
-    cmd = addenv(cmd, env)
+def venv(ctx, *, venv, cmd, python=None):
     cmd = addargs(cmd, ctx["args"])
     yield "uv"
     yield "run"
@@ -50,8 +39,7 @@ def script(ctx, *, script):
 
 
 @register
-def cmd(ctx, *, cmd, env=""):
-    cmd = addenv(cmd, env)
+def cmd(ctx, *, cmd):
     cmd = addargs(cmd, ctx["args"])
     yield from shlex.split(cmd)
 
@@ -118,8 +106,7 @@ def redis(_, *, redis, port=None):
 
 
 @register
-def nix(ctx, *, nix, cmd, env=""):
-    cmd = addenv(cmd, env)
+def nix(ctx, *, nix, cmd):
     cmd = addargs(cmd, ctx["args"])
     yield "nix-shell"
     yield "--packages"
