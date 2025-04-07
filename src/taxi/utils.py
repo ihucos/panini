@@ -41,7 +41,11 @@ def get_command2(name, section, args):
     driver = infer_driver_name(name, section)
     section.pop("driver", None)
     via = section.pop("via", None)
-    env = section.pop("env", None)
+
+    if driver not in ["assert_cmd"]:  # HACK
+        env = section.pop("env", None)
+    else:
+        env = ""
     # if via:
     #     via_cmd = get_command(via, [])
     #     assert 0, via_cmd
@@ -54,6 +58,7 @@ def get_command2(name, section, args):
         section = {name: None}
     try:
         ctx = {"section_name": name, "args": args}
+        # print(handler.__name__, section)
         cmd = handler(ctx, **section)
     except TypeError as exc:
         # Make error message less pythonic and more INI
@@ -76,7 +81,8 @@ def get_command2(name, section, args):
     if via:
         cmd = get_command(via, list(cmd))
 
-    return list(cmd)
+    cmd = list(cmd)
+    return cmd
 
 
 _config = None
