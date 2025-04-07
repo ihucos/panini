@@ -18,6 +18,7 @@ def get_command(name):
         section = config[name]
     except KeyError:
         raise TaskError(f"no such task: {name}")
+    ctx = {"section_name": name}
     return get_command2(name, dict(section))
 
 
@@ -34,7 +35,8 @@ def get_command2(name, section):
     if section == {}:
         section = {name: None}
     try:
-        cmd = handler(name, **section)
+        ctx = {"section_name": name}
+        cmd = handler(ctx, **section)
     except TypeError as exc:
         # Make error message less pythonic and more INI
         msg = (

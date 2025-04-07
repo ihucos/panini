@@ -128,12 +128,12 @@ def noop(_, noop):
 
 
 @register
-def use(section_name, *, use, **kw):
+def use(ctx, *, use, **kw):
     try:
         use = dict(get_config()[use])
     except KeyError:
         raise TaskError(f"use: no such task: {use}")
-    return get_command2(section_name, dict(use, **kw))
+    return get_command2(ctx["section_name"], dict(use, **kw))
 
 
 # @register
@@ -143,13 +143,13 @@ def use(section_name, *, use, **kw):
 
 
 @register
-def assert_(section_name, **kw):
+def assert_(ctx, **kw):
     assert_ = kw.pop("assert")
-    cmd = get_command2(section_name, kw)
+    cmd = get_command2(ctx["section_name"], kw)
     cmd_str = shlex.join(cmd)
     if cmd_str != assert_:
         raise TaskError(
-            f"assert failed at {section_name}:\nexpected: {assert_}\nactual:   {cmd_str}"
+            f"assert failed at {ctx['section_name']}:\nexpected: {assert_}\nactual:   {cmd_str}"
         )
     yield "true"
 
