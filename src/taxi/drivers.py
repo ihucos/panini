@@ -15,9 +15,14 @@ def addenv(cmd, env):
     return f"env {' '.join(env)} {cmd}"
 
 
+def addargs(cmd, args):
+    return cmd.format(shlex.join(args))
+
+
 @register
-def venv(_, *, venv, cmd, env="", python=None):
+def venv(ctx, *, venv, cmd, env="", python=None):
     cmd = addenv(cmd, env)
+    cmd = addargs(cmd, ctx["args"])
     yield "uv"
     yield "run"
     yield "--no-project"
@@ -33,16 +38,19 @@ def venv(_, *, venv, cmd, env="", python=None):
 
 
 @register
-def script(_, *, script):
+def script(ctx, *, script):
     with tempfile.NamedTemporaryFile(mode="w", delete=False) as temp_file:
         temp_file.write(script)
     os.chmod(temp_file.name, stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
     yield temp_file.name
+    for arg in ctx["args"]:
+        yield arg
 
 
 @register
-def cmd(_, *, cmd, env=""):
+def cmd(ctx, *, cmd, env=""):
     cmd = addenv(cmd, env)
+    cmd = addargs(cmd, ctx["args"])
     yield from shlex.split(cmd)
 
 
@@ -108,8 +116,9 @@ def redis(_, *, redis, port=None):
 
 
 @register
-def nix(_, *, nix, cmd, env=""):
+def nix(ctx, *, nix, cmd, env=""):
     cmd = addenv(cmd, env)
+    cmd = addargs(cmd, ctx["args"])
     yield "nix-shell"
     yield "--packages"
     yield from [i for i in nix.splitlines() if i]
@@ -133,7 +142,7 @@ def use(ctx, *, use, **kw):
         use = dict(get_config()[use])
     except KeyError:
         raise TaskError(f"use: no such task: {use}")
-    return get_command2(ctx["section_name"], dict(use, **kw))
+    return get_command2(ctx["section_name"], dict(use, **kw), ctx["args"])
 
 
 # @register
@@ -145,7 +154,7 @@ def use(ctx, *, use, **kw):
 @register
 def assert_(ctx, **kw):
     assert_ = kw.pop("assert")
-    cmd = get_command2(ctx["section_name"], kw)
+    cmd = get_command2(ctx["section_name"], kw, ctx["args"])
     cmd_str = shlex.join(cmd)
     if cmd_str != assert_:
         raise TaskError(
@@ -155,7 +164,7 @@ def assert_(ctx, **kw):
 
 
 @register
-def list(_, *, list=None):
+def list(ctx, *, list=None):
     if list is None:
         list = [
             section for section in get_config() if section not in ("list", "DEFAULT")
@@ -164,20 +173,20 @@ def list(_, *, list=None):
         list = [i for i in list.splitlines() if i]
     help = []
     for task in list:
-        cmd = shlex.join(get_command(task))
+        cmd = shlex.join(get_command(task, ctx["args"]))
         help.append(f"{task:16}{cmd}")
     yield "printf"
     yield "\n".join(help)
 
 
 @register
-def services(_, *, services):
+def services(ctx, *, services):
     import json
 
     services = [i for i in services.splitlines() if i]
     config = {"version": "0.5", "processes": {}}
     for service in services:
-        cmd = get_command(service)
+        cmd = get_command(service, ctx["args"])
         config["processes"][service] = {"command": shlex.join(cmd)}
     source = json.dumps(config)
     with tempfile.NamedTemporaryFile(mode="w", delete=False) as temp_file:

@@ -12,17 +12,17 @@ def infer_driver_name(section_name, section):
     return next(iter(section.keys()))
 
 
-def get_command(name):
+def get_command(name, args):
     config = get_config()
     try:
         section = config[name]
     except KeyError:
         raise TaskError(f"no such task: {name}")
     ctx = {"section_name": name}
-    return get_command2(name, dict(section))
+    return get_command2(name, dict(section), args)
 
 
-def get_command2(name, section):
+def get_command2(name, section, args):
     drivers = get_drivers()
 
     driver = infer_driver_name(name, section)
@@ -35,7 +35,7 @@ def get_command2(name, section):
     if section == {}:
         section = {name: None}
     try:
-        ctx = {"section_name": name}
+        ctx = {"section_name": name, "args": args}
         cmd = handler(ctx, **section)
     except TypeError as exc:
         # Make error message less pythonic and more INI

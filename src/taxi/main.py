@@ -9,7 +9,7 @@ from . import drivers as _
 def validate_all_sections():
     for section in get_config():
         if section != "DEFAULT":
-            get_command(section)
+            get_command(section, ["true"])
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     try:
         init_config()
         validate_all_sections()
-        cmd = get_command(run)
+        cmd = get_command(run, sys.argv[2:])
     except TaskError as exc:
         print(f"taxi error: {exc.args[0]}")
         sys.exit(1)
