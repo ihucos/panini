@@ -27,6 +27,10 @@ def get_command2(name, section, args):
 
     driver = infer_driver_name(name, section)
     section.pop("driver", None)
+    via = section.pop("via", None)
+    # if via:
+    #     via_cmd = get_command(via, [])
+    #     assert 0, via_cmd
     try:
         handler = drivers[driver]
     except KeyError:
@@ -51,6 +55,10 @@ def get_command2(name, section, args):
             )
         )
         raise TaskError(f"section {name}: driver {msg}")
+
+    if via:
+        return get_command(via, list(cmd))
+
     return list(cmd)
 
 

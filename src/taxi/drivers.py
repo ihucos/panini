@@ -16,6 +16,8 @@ def addenv(cmd, env):
 
 
 def addargs(cmd, args):
+    if args and not "{}" in cmd:
+        raise TaskError(f"got argvs ({args}) but cmd (`{cmd}`) does not accept them")
     return cmd.format(shlex.join(args))
 
 
