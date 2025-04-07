@@ -5,8 +5,19 @@ import stat
 from .utils import get_config, get_command, register, get_command2, TaskError
 
 
+def addenv(cmd, env):
+    env = [i for i in env.splitlines() if i]
+    if not env:
+        return cmd
+    for e in env:
+        if "=" not in e:
+            raise TaskError(f"Not an env (Missing a =): {e}")
+    return f"env {' '.join(env)} {cmd}"
+
+
 @register
-def venv(_, *, venv, cmd, python=None):
+def venv(_, *, venv, cmd, env="", python=None):
+    cmd = addenv(cmd, env)
     yield "uv"
     yield "run"
     yield "--no-project"
@@ -30,7 +41,8 @@ def script(_, *, script):
 
 
 @register
-def cmd(_, *, cmd):
+def cmd(_, *, cmd, env=""):
+    cmd = addenv(cmd, env)
     yield from shlex.split(cmd)
 
 
@@ -96,7 +108,8 @@ def redis(_, *, redis, port=None):
 
 
 @register
-def nix(_, *, nix, cmd):
+def nix(_, *, nix, cmd, env=""):
+    cmd = addenv(cmd, env)
     yield "nix-shell"
     yield "--packages"
     yield from [i for i in nix.splitlines() if i]
@@ -121,6 +134,12 @@ def use(section_name, *, use, **kw):
     except KeyError:
         raise TaskError(f"use: no such task: {use}")
     return get_command2(section_name, dict(use, **kw))
+
+
+# @register
+# def env(section_name, *, env, **kw):
+#     kw["cmd"] = f"env {' '.join()} {kw['cmd']}"
+#     return get_command2(section_name, kw)
 
 
 @register
