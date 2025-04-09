@@ -6,8 +6,10 @@ from .utils import get_config, get_command, register, get_command2, TaskError
 
 
 def addargs(cmd, args):
-    if args and not "{}" in cmd:
+    if args and "{}" not in cmd:
         raise TaskError(f"got argvs ({args}) but cmd (`{cmd}`) does not accept them")
+    if not args and "{}" in cmd:
+        raise TaskError(f"expecting argvs for cmd: `{cmd}`")
     return cmd.format(shlex.join(args))
 
 
@@ -42,6 +44,16 @@ def script(ctx, *, script):
 def cmd(ctx, *, cmd):
     cmd = addargs(cmd, ctx["args"])
     yield from shlex.split(cmd)
+
+
+@register
+def shell(ctx, *, shell, shellcmd="sh -exc {}"):
+    for part in shlex.split(shellcmd):
+        if part == "{}":
+            yield shell
+        else:
+            yield part
+    yield from ctx["args"]
 
 
 def _docker(*, version="latest", image, image_port, user_port, envs):
@@ -106,7 +118,7 @@ def redis(_, *, redis, port=None):
 
 
 @register
-def nix(ctx, *, nix, cmd):
+def nix(ctx, *, nix, cmd="uv {}"):
     cmd = addargs(cmd, ctx["args"])
     yield "nix-shell"
     yield "--packages"

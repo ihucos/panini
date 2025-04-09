@@ -16,7 +16,7 @@ def main():
     try:
         run = sys.argv[1]
     except IndexError:
-        print("taxi error: missing arg")
+        print("panini error: missing arg")
         sys.exit(1)
 
     try:
@@ -24,10 +24,10 @@ def main():
         validate_all_sections()
         cmd = get_command(run, sys.argv[2:])
     except TaskError as exc:
-        print(f"taxi error: {exc.args[0]}")
+        print(f"panini error: {exc.args[0]}")
         sys.exit(1)
     except configparser.Error as exc:
-        print(f"taxi error: parsing: {exc.message}")
+        print(f"panini error: parsing: {exc.message}")
         sys.exit(1)
     print(cmd)
     subprocess.call(cmd)

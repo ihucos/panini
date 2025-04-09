@@ -95,7 +95,7 @@ def init_config():
         interpolation=configparser.ExtendedInterpolation(),
         allow_no_value=True,
     )
-    config_file = os.environ.get("TAXI_CONFIG", "taxi.ini")
+    config_file = os.environ.get("PANINI_CONFIG", "pan.ini")
     _config.read(config_file)
 
 

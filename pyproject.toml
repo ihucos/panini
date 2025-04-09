@@ -1,10 +1,10 @@
 [project]
-name = "taxi"
+name = "panini"
 version = "0.1.0"
-description = "Add your description here"
+description = "Compose project tasks"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-taxi = "taxi.main:main"
+panini = "panini.main:main"
