@@ -186,7 +186,7 @@ def assert_err(ctx, **kw):
 
 
 @register
-def list(ctx, *, list=None):
+def list_(ctx, *, list=None):
     if list is None:
         list = [
             section for section in get_config() if section not in ("list", "DEFAULT")
@@ -195,10 +195,17 @@ def list(ctx, *, list=None):
         list = [i for i in list.splitlines() if i]
     help = []
     for task in list:
-        cmd = shlex.join(get_command(task, ctx["args"]))
-        help.append(f"{task:16}{cmd}")
+        help.append(f"{task:16}help here")
     yield "printf"
-    yield "\n".join(help)
+    yield "\n".join(help) + "\n"
+
+
+@register
+def getcmd(ctx, *, getcmd=None):
+    args = list(ctx["args"])
+    cmd = args.pop()
+    yield "echo"
+    yield shlex.join(get_command(cmd, args))
 
 
 @register

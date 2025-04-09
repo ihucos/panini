@@ -2,6 +2,12 @@ import configparser
 import os
 
 
+SYSTEM_CONFIG = {
+    "list": {},
+    "getcmd": {},
+}
+
+
 class TaskError(Exception):
     pass
 
@@ -91,9 +97,13 @@ _config = None
 
 def init_config():
     global _config
-    _config = configparser.ConfigParser(allow_no_value=True)
+    config = configparser.ConfigParser(allow_no_value=True)
     config_file = os.environ.get("PANINI_CONFIG", "pan.ini")
-    _config.read(config_file)
+    config.read(config_file)
+    user_config = {k: dict(v) for (k, v) in config.items()}
+    config = SYSTEM_CONFIG.copy()
+    config.update(user_config)
+    _config = config
 
 
 def get_config():
