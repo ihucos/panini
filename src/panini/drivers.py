@@ -195,7 +195,8 @@ def list_(ctx, *, list=None):
         list = [i for i in list.splitlines() if i]
     help = []
     for task in list:
-        help.append(f"{task:16}help here")
+        if not task.startswith("_"):
+            help.append(f"{task:16}help here")
     yield "printf"
     yield "\n".join(help) + "\n"
 
@@ -203,7 +204,7 @@ def list_(ctx, *, list=None):
 @register
 def getcmd(ctx, *, getcmd=None):
     args = list(ctx["args"])
-    cmd = args.pop()
+    cmd = args.pop(0)
     yield "echo"
     yield shlex.join(get_command(cmd, args))
 

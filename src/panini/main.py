@@ -22,7 +22,7 @@ def main():
     except configparser.Error as exc:
         print(f"panini error: parsing: {exc.message}")
         sys.exit(1)
-    print(f"panini is ready: {cmd}")
+    # print(f"panini is ready: {cmd}")
     subprocess.call(cmd)
 
 
