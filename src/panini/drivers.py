@@ -118,7 +118,7 @@ def redis(_, *, redis, port=None):
 
 
 @register
-def nix(ctx, *, nix, cmd="env {}"):
+def nix(ctx, *, nix, cmd="{}"):
     cmd = addargs(cmd, ctx["args"])
     yield "nix-shell"
     yield "--packages"
