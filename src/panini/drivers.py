@@ -47,7 +47,7 @@ def cmd(ctx, *, cmd):
 
 
 @register
-def shell(ctx, *, shell, shellcmd="sh -exc {}"):
+def shell(ctx, *, shell, shellcmd="sh -exc {} --"):
     for part in shlex.split(shellcmd):
         if part == "{}":
             yield shell
@@ -118,7 +118,7 @@ def redis(_, *, redis, port=None):
 
 
 @register
-def nix(ctx, *, nix, cmd="uv {}"):
+def nix(ctx, *, nix, cmd="env {}"):
     cmd = addargs(cmd, ctx["args"])
     yield "nix-shell"
     yield "--packages"

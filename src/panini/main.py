@@ -6,12 +6,6 @@ from .utils import get_config, get_command, TaskError, init_config
 from . import drivers as _
 
 
-def validate_all_sections():
-    for section in get_config():
-        if section != "DEFAULT":
-            get_command(section, [])
-
-
 def main():
     try:
         run = sys.argv[1]
@@ -21,7 +15,6 @@ def main():
 
     try:
         init_config()
-        validate_all_sections()
         cmd = get_command(run, sys.argv[2:])
     except TaskError as exc:
         print(f"panini error: {exc.args[0]}")

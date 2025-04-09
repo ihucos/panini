@@ -91,10 +91,7 @@ _config = None
 
 def init_config():
     global _config
-    _config = configparser.ConfigParser(
-        interpolation=configparser.ExtendedInterpolation(),
-        allow_no_value=True,
-    )
+    _config = configparser.ConfigParser(allow_no_value=True)
     config_file = os.environ.get("PANINI_CONFIG", "pan.ini")
     _config.read(config_file)
 
