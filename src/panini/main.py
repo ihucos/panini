@@ -10,7 +10,7 @@ def main():
     try:
         run = sys.argv[1]
     except IndexError:
-        print("panini error: missing arg")
+        print('panini error: missing arg, try "list".')
         sys.exit(1)
 
     try:

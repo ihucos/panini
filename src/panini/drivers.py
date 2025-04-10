@@ -187,16 +187,16 @@ def assert_err(ctx, **kw):
 
 @register
 def list_(ctx, *, list=None):
+    config = get_config()
     if list is None:
-        list = [
-            section for section in get_config() if section not in ("list", "DEFAULT")
-        ]
+        list = [section for section in config if section not in ("DEFAULT",)]
     else:
         list = [i for i in list.splitlines() if i]
     help = []
     for task in list:
         if not task.startswith("_"):
-            help.append(f"{task:16}help here")
+            help_str = config[task].get("help", "<no help key>")
+            help.append(f"{task:16}{help_str}")
     yield "printf"
     yield "\n".join(help) + "\n"
 
