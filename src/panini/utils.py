@@ -4,7 +4,7 @@ import os
 
 SYSTEM_CONFIG = {
     "list": {},
-    "getcmd": {"getcmd": None, 'help': },
+    "getcmd": {"getcmd": None, "help": "get command"},
 }
 
 

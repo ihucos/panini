@@ -1,0 +1,7 @@
+site_name: panini
+site_url: https://github.com/ihucos/panini
+repo_url: https://github.com/ihucos/panini
+theme:
+  name: material
+  palette:
+    primary: black
