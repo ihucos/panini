@@ -1,139 +1,125 @@
-# Section Types
+## Section Types
 
-| Method      | Description                          |
-| ----------- | ------------------------------------ |
-| `GET`       | :material-check:     Fetch resource  |
-| `PUT`       | :material-check-all: Update resource |
-| `DELETE`    | :material-close:     Delete resource |
----
-
-### cmd  
+### `cmd`  
 Runs a command, injecting arguments into `{}` placeholder if present.
 
-Keys:<br/>
-
-
-- `cmd` – command to run
+| Key   | Description         |
+|-------|---------------------|
+| `cmd` | Command to run      |
 
 ---
 
-### getcmd  
+### `getcmd`  
 Prints the resolved shell command for a task.
 
-Keys:<br/>
-
-
-- `getcmd` – command to evaluate and echo (optional)
+| Key     | Description                             |
+|---------|-----------------------------------------|
+| `getcmd`| Command to evaluate and echo (optional) |
 
 ---
 
-### list  
+### `list`  
 Prints a list of tasks.
 
-Keys:<br/>
-
-- `list` – newline-separated list of task names (optional)
+| Key    | Description                                     |
+|--------|-------------------------------------------------|
+| `list` | Newline-separated list of task names (optional) |
 
 ---
 
-### script  
+### `script`  
 Executes the given source code as a script.
 
-Keys:<br/>
-
-- `script` – bash or shell script
+| Key      | Description         |
+|----------|---------------------|
+| `script` | Bash or shell script |
 
 ---
 
-### services  
+### `services`  
 Runs `process-compose` with the given services.
 
-Keys:<br/>
-
-- `services` – newline-separated service names
+| Key       | Description                                      |
+|-----------|--------------------------------------------------|
+| `services`| Newline-separated service names                  |
 
 ---
 
-### shell  
+### `shell`  
 Executes a shell snippet using a customizable shell command wrapper.
 
-Keys:<br/>
-
-- `shell` – shell script  
-- `shellcmd` – template for shell runner (optional, defaults to `sh -exc {} --`)
+| Key        | Description                                                        |
+|------------|--------------------------------------------------------------------|
+| `shell`    | Shell script                                                       |
+| `shellcmd` | Template for shell runner (optional, defaults to `sh -exc {} --`)  |
 
 ---
 
-### use  
+### `use`  
 Imports and executes another task, passing along keyword arguments.
 
-Keys:<br/>
-
-- `use` – task name to import  
-- Additional `**kw` values – passed to the task
+| Key     | Description                        |
+|---------|------------------------------------|
+| `use`   | Task name to import                |
+| `**kw`  | Additional values passed to task   |
 
 ---
 
 ## Package Managers
 
-### venv  
+### `venv`  
 Sets up a temporary Python virtual environment using `uv` and runs a command inside it.
 
-Keys:<br/>
-
-- `venv` – python requirements to install  
-- `cmd` – command to run inside venv  
-- `python` – python interpreter path (optional)
+| Key      | Description                        |
+|----------|------------------------------------|
+| `venv`   | Python requirements to install     |
+| `cmd`    | Command to run inside venv         |
+| `python` | Python interpreter path (optional) |
 
 ---
 
-### nix  
+### `nix`  
 Uses `nix-shell` to run a command in a Nix environment.
 
-Keys:<br/>
-
-- `nix` – newline separated packages  
-- `cmd` – command to run in nix-shell (optional, defaults to `{}`)
-
----
-
-
-## Docker services
-
-### mysql  
-Runs a MySQL Docker container.
-
-Keys:<br/>
-
-- `mysql` – mysql image version  
-- `port` – exposed port on host machine (optional)  
-- `user` – name of the database user (optional)  
-- `password` – password for the user (optional)  
-- `db` – name of the database to create (optional)  
+| Key   | Description                                              |
+|-------|----------------------------------------------------------|
+| `nix` | Newline-separated packages                               |
+| `cmd` | Command to run in nix-shell (optional, defaults to `{}`) |
 
 ---
 
-### redis  
-Runs a Redis Docker container.
+## Docker Services
 
-Keys:<br/>
+### `mysql`
 
-- `redis` – redis image version  
-- `port` – exposed port on host machine (optional)
-
----
-
-### postgres  
-Runs a PostgreSQL Docker container.
-
-Keys:<br/>
-
-- `postgres` – postgres image version  
-- `port` – exposed port on host machine (optional)  
-- `user` – name of the database user (optional)  
-- `password` – password for the user (optional)  
-- `db` – name of the database to create (optional)  
-- `lang` – sets the container's `LANG` environment variable (optional)
+| Key       | Description                               |
+|-----------|-------------------------------------------|
+| `mysql`   | MySQL image version                       |
+| `port`    | Exposed port on host machine (optional)   |
+| `user`    | Name of the database user (optional)      |
+| `password`| Password for the user (optional)          |
+| `db`      | Name of the database to create (optional) |
 
 ---
 
+### `redis`
+
+| Key     | Description                             |
+|---------|-----------------------------------------|
+| `redis` | Redis image version                     |
+| `port`  | Exposed port on host machine (optional) |
+
+---
+
+### `postgres`
+
+| Key       | Description                                        |
+|-----------|----------------------------------------------------|
+| `postgres`| PostgreSQL image version                           |
+| `port`    | Exposed port on host machine (optional)            |
+| `user`    | Name of the database user (optional)               |
+| `password`| Password for the user (optional)                   |
+| `db`      | Name of the database to create (optional)          |
+| `lang`    | Sets the container's `LANG` env var (optional)     |
+
+---

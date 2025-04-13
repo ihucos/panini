@@ -1,4 +1,4 @@
-site_name: panini
+site_name: ""
 site_url: https://github.com/ihucos/panini
 repo_url: https://github.com/ihucos/panini
 
@@ -15,7 +15,6 @@ markdown_extensions:
 
 theme:
   name: material
-  palette:
   features:
     - content.code.copy
-
+    - navigation.sections
