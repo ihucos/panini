@@ -1,7 +1,14 @@
-site_name: ""
+site_name: Panini 
+
 site_url: https://github.com/ihucos/panini
 repo_url: https://github.com/ihucos/panini
 
+nav:
+  - Quickstart: index.md
+  - Tutorial: bluasdf.md
+  - Reference:
+    - Section Types: drivers.md
+    - Global Keys: blah.md
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -14,7 +21,10 @@ markdown_extensions:
   - tables
 
 theme:
+  palette:
+    primary: "blue grey"
   name: material
+  logo: "assets/panini.png"
   features:
     - content.code.copy
     - navigation.sections

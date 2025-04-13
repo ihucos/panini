@@ -1,9 +1,16 @@
 
+
+<img src="assets/panini.png" alt="panini logo" width="175"/>
+
 # Panini
-<img src="assets/panini.png" alt="panini logo" width="100"/>
 
 
-**Rapid Development Environment Managment.**
+
+Panini is a delicious mix of `nix`, `docker`, and `process-compose`, seamlessly
+combined via a simple INI file to create modern development environments with
+ease.
+
+Or in four words: *Rapid Development Environment Managment.*
 
 
 
@@ -15,7 +22,7 @@ pip install panini
 
 ## Quickstart
 
-Write this to the `pan.ini` file.
+Write your config to the `pan.ini` file.
 ```ini
 [postgres]
 postgres=17.4
@@ -27,10 +34,14 @@ password=devpass
 nix=
   process-compose
   uv
+  git
 
 [app]
 cmd=uv run python3 app.py
 via=devbox
+
+[uv]
+cmd=uv {}
 
 [up]
 services=
@@ -41,34 +52,33 @@ via=devbox
 
 [help]
 help       = Manage testapp
+app        = Start testapp
+devbox     = Run something inside nix
 postgres   = Start postgrees server
 redis      = Start redis server
-devbox     = Run something inside nix
-app        = Start testapp
 up         = Run app and dependencies.
+uv         = Run uv
 ```
 
-Run any of the defined commands, for example:
+Now run any of the defined commands, for example:
 ```
 $ panini up
 ```
 <img src="assets/process-compose.png" alt="process-compose terminal" width="width: 100%;"/>
 
 
-## Congratulation!
+## Congratulations
 
 **You got**
 
-- An isolated development environment (Based on nix and docker)
-- Handy commands to manage your app
-- Easily run your whole app and its dependencies
+- An isolated, shareable development environment with minimal dependencies.
+- A handy way to organize development specific tasks
+- Run your app and dependant services in one command.
 
 **Forget the days of**
 
-- Containerizing everything so it fits into `docker compose`
-- Slow test runs because of docker for mac.
+- "It works on my machine"
+- Containerizing everything, so it fits into `docker-compose`
+- Slow test runs because of docker for mac (use nix).
 - Huge YAML files nobody understands.
-- Many weird files in your repo that barely accomplish the same.
-- Isolated development environments are not a luxury anyomore.
-
----
+- I weird collection of weird files. One weird file for everything is enough.
