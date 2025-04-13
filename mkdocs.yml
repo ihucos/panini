@@ -2,9 +2,20 @@ site_name: panini
 site_url: https://github.com/ihucos/panini
 repo_url: https://github.com/ihucos/panini
 
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - tables
+
 theme:
   name: material
   palette:
+  features:
+    - content.code.copy
 
-markdown_extensions:
-  - tables
