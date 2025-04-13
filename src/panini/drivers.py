@@ -14,7 +14,13 @@ def addargs(cmd, args):
 
 
 @register
-def venv(ctx, *, venv, cmd, python=None):
+def venv(
+    ctx,
+    *,
+    venv: "python requirements to install",
+    cmd,
+    python=None,
+):
     cmd = addargs(cmd, ctx["args"])
     yield "uv"
     yield "run"
@@ -125,16 +131,6 @@ def nix(ctx, *, nix, cmd="{}"):
     yield from [i for i in nix.splitlines() if i]
     yield "--run"
     yield cmd
-
-
-@register
-def raw(_, **kw):
-    yield kw
-
-
-@register
-def noop(_, noop):
-    yield "true"
 
 
 @register
