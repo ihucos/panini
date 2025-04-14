@@ -182,19 +182,14 @@ def assert_err(ctx, **kw):
 
 
 @register
-def list_(ctx, *, list=None):
-    config = get_config()
-    if list is None:
-        list = [section for section in config if section not in ("DEFAULT",)]
-    else:
-        list = [i for i in list.splitlines() if i]
-    help = []
-    for task in list:
-        if not task.startswith("_"):
-            help_str = config[task].get("help", "<no help key>")
-            help.append(f"{task:16}{help_str}")
-    yield "printf"
-    yield "\n".join(help) + "\n"
+def help(ctx, *, help=None, **kw):
+    print(help)
+    print()
+    print("Subcommands:")
+    max_key = max(len(i) for i in kw.keys())
+    for key, val in kw.items():
+        print(key.ljust(max_key + 2), val)
+    yield "true"
 
 
 @register

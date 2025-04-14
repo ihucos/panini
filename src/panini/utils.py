@@ -4,7 +4,7 @@ import os
 
 SYSTEM_CONFIG = {
     "list": {},
-    "getcmd": {"getcmd": None, "help": "get command"},
+    "getcmd": {"getcmd": None},
 }
 
 
@@ -53,11 +53,6 @@ def get_command2(name, section, args):
     else:
         env = ""
         via = ""
-
-    try:
-        del section["help"]
-    except KeyError:
-        pass
 
     try:
         handler = drivers[driver]

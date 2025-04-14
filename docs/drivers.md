@@ -18,12 +18,13 @@ Prints the resolved shell command for a task.
 
 ---
 
-### `list`  
+### `help`  
 Prints a list of tasks.
 
-| Key    | Description                                     |
-|--------|-------------------------------------------------|
-| `list` | Newline-separated list of task names (optional) |
+| Key    | Description       |
+|--------|-------------------
+| `help` | One sentence help |
+| `*kw`  | Help subcommands -> string mapping |
 
 ---
 

@@ -6,9 +6,8 @@
 
 
 
-Panini is a delicious mix of `nix`, `docker`, and `process-compose`, seamlessly
-combined via a simple INI file to create modern development environments with
-ease.
+Panini is a delicious mix of tools like `nix`, `docker`, and `process-compose`. Seamlessly
+combined via a simple INI file they create a modern development environments with ease.
 
 Or in four words: *Rapid Development Environment Managment.*
 
@@ -22,7 +21,7 @@ pip install panini
 
 ## Quickstart
 
-Write your config to the `pan.ini` file.
+Write your own `pan.ini` file.
 ```ini
 [postgres]
 postgres=17.4
@@ -42,6 +41,7 @@ via=devbox
 
 [uv]
 cmd=uv {}
+via=devbox
 
 [up]
 services=
@@ -71,7 +71,7 @@ $ panini up
 
 **You got**
 
-- An isolated, shareable development environment with minimal dependencies.
+- An isolated, unified, pinnable development environment with minimal dependencies.
 - A handy way to organize development specific tasks
 - Run your app and dependant services in one command.
 
