@@ -12,6 +12,7 @@ nav:
     - Global Keys: global_keys.md
   - Recipes:
     - Local Environment Variables: localenvs.md
+    - Environment Variables Inheritance: baseenvs.md
 
 markdown_extensions:
   - pymdownx.highlight:

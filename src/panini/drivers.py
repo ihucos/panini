@@ -193,6 +193,14 @@ def help(ctx, *, help=None, **kw):
 
 
 @register
+def env(ctx, *, env=None, **kw):
+    yield "env"
+    for key, val in kw.items():
+        yield f"{key}={val}"
+    yield from ctx["args"]
+
+
+@register
 def getcmd(ctx, *, getcmd=None):
     args = list(ctx["args"])
     cmd = args.pop(0)

@@ -28,6 +28,15 @@ Prints a list of tasks.
 
 ---
 
+### `env`  
+Use keys as environment variables
+
+| Key    | Description       |
+|--------|-------------------
+| `*kw`  | Environment variables |
+
+---
+
 ### `script`  
 Executes the given source code as a script.
 
