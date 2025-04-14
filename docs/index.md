@@ -72,13 +72,6 @@ $ panini up
 **You got**
 
 - An isolated, unified, pinnable development environment with minimal dependencies.
-- A handy way to organize development specific tasks
+- A powerful way to organize development specific tasks
 - Run your app and dependant services in one command.
 
-**Forget the days of**
-
-- "It works on my machine"
-- Containerizing everything, so it fits into `docker-compose`
-- Slow test runs because of docker for mac (use nix).
-- Huge YAML files nobody understands.
-- I weird collection of weird files. One weird file for everything is enough.
