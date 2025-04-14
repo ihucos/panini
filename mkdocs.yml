@@ -8,7 +8,7 @@ nav:
   - Tutorial: bluasdf.md
   - Reference:
     - Section Types: drivers.md
-    - Global Keys: blah.md
+    - Global Keys: global_keys.md
 
 markdown_extensions:
   - pymdownx.highlight:
