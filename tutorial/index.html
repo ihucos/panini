@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://github.com/ihucos/panini/drivers/">
+        <link rel="canonical" href="https://github.com/ihucos/panini/tutorial/">
       
       
-        <link rel="prev" href="../tutorial/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../section_type_declaration/">
+        <link rel="next" href="../drivers/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Section Types - Panini</title>
+        <title>Tutorial - Panini</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#section-types" class="md-skip">
+        <a href="#tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Section Types
+              Tutorial
             
           </span>
         </div>
@@ -245,10 +245,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../tutorial/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -259,6 +281,86 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-type-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section Type Declaration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section Type Declaration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-via-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      The via key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-env-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      The env key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -267,8 +369,6 @@
       
   
   
-    
-  
   
   
     
@@ -281,11 +381,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -301,7 +401,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Reference
@@ -312,30 +412,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Section Types
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../drivers/" class="md-nav__link">
         
   
   
@@ -346,177 +426,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#section-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Section Types
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Section Types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cmd" class="md-nav__link">
-    <span class="md-ellipsis">
-      cmd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getcmd" class="md-nav__link">
-    <span class="md-ellipsis">
-      getcmd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#help" class="md-nav__link">
-    <span class="md-ellipsis">
-      help
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#script" class="md-nav__link">
-    <span class="md-ellipsis">
-      script
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#services" class="md-nav__link">
-    <span class="md-ellipsis">
-      services
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      shell
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use" class="md-nav__link">
-    <span class="md-ellipsis">
-      use
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#package-managers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Package Managers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Package Managers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#venv" class="md-nav__link">
-    <span class="md-ellipsis">
-      venv
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nix" class="md-nav__link">
-    <span class="md-ellipsis">
-      nix
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker Services
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Services">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    <span class="md-ellipsis">
-      mysql
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      redis
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#postgres" class="md-nav__link">
-    <span class="md-ellipsis">
-      postgres
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -665,6 +574,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -673,73 +584,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#section-types" class="md-nav__link">
+  <a href="#basics" class="md-nav__link">
     <span class="md-ellipsis">
-      Section Types
+      Basics
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Section Types">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-type-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section Type Declaration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section Type Declaration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cmd" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
-      cmd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getcmd" class="md-nav__link">
-    <span class="md-ellipsis">
-      getcmd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#help" class="md-nav__link">
-    <span class="md-ellipsis">
-      help
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#script" class="md-nav__link">
-    <span class="md-ellipsis">
-      script
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#services" class="md-nav__link">
-    <span class="md-ellipsis">
-      services
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      shell
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use" class="md-nav__link">
-    <span class="md-ellipsis">
-      use
+      Examples
     </span>
   </a>
   
@@ -751,77 +617,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#package-managers" class="md-nav__link">
+  <a href="#the-via-key" class="md-nav__link">
     <span class="md-ellipsis">
-      Package Managers
+      The via key
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Package Managers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#venv" class="md-nav__link">
-    <span class="md-ellipsis">
-      venv
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nix" class="md-nav__link">
-    <span class="md-ellipsis">
-      nix
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-services" class="md-nav__link">
+  <a href="#the-env-key" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker Services
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Services">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    <span class="md-ellipsis">
-      mysql
+      The env key
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
-      redis
+      Conclusion
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#postgres" class="md-nav__link">
-    <span class="md-ellipsis">
-      postgres
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -844,276 +662,100 @@
   
 
 
-  <h1>Section Types</h1>
-
-<h2 id="section-types">Section Types</h2>
-<h3 id="cmd"><code>cmd</code></h3>
-<p>Runs a command, injecting arguments into <code>{}</code> placeholder if present.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>cmd</code></td>
-<td>Command to run</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="getcmd"><code>getcmd</code></h3>
-<p>Prints the resolved shell command for a task.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>getcmd</code></td>
-<td>Command to evaluate and echo (optional)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="help"><code>help</code></h3>
-<p>Prints a list of tasks.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>help</code></td>
-<td>One sentence help</td>
-</tr>
-<tr>
-<td><code>*kw</code></td>
-<td>Help subcommands -&gt; string mapping</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="script"><code>script</code></h3>
-<p>Executes the given source code as a script.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>script</code></td>
-<td>Bash or shell script</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="services"><code>services</code></h3>
-<p>Runs <code>process-compose</code> with the given services.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>services</code></td>
-<td>Newline-separated service names</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="shell"><code>shell</code></h3>
-<p>Executes a shell snippet using a customizable shell command wrapper.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>shell</code></td>
-<td>Shell script</td>
-</tr>
-<tr>
-<td><code>shellcmd</code></td>
-<td>Template for shell runner (optional, defaults to <code>sh -exc {} --</code>)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="use"><code>use</code></h3>
-<p>Imports and executes another task, passing along keyword arguments.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>use</code></td>
-<td>Task name to import</td>
-</tr>
-<tr>
-<td><code>**kw</code></td>
-<td>Additional values passed to task</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="package-managers">Package Managers</h2>
-<h3 id="venv"><code>venv</code></h3>
-<p>Sets up a temporary Python virtual environment using <code>uv</code> and runs a command inside it.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>venv</code></td>
-<td>Python requirements to install</td>
-</tr>
-<tr>
-<td><code>cmd</code></td>
-<td>Command to run inside venv</td>
-</tr>
-<tr>
-<td><code>python</code></td>
-<td>Python interpreter path (optional)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="nix"><code>nix</code></h3>
-<p>Uses <code>nix-shell</code> to run a command in a Nix environment.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>nix</code></td>
-<td>Newline-separated packages</td>
-</tr>
-<tr>
-<td><code>cmd</code></td>
-<td>Command to run in nix-shell (optional, defaults to <code>{}</code>)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="docker-services">Docker Services</h2>
-<h3 id="mysql"><code>mysql</code></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>mysql</code></td>
-<td>MySQL image version</td>
-</tr>
-<tr>
-<td><code>port</code></td>
-<td>Exposed port on host machine (optional)</td>
-</tr>
-<tr>
-<td><code>user</code></td>
-<td>Name of the database user (optional)</td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>Password for the user (optional)</td>
-</tr>
-<tr>
-<td><code>db</code></td>
-<td>Name of the database to create (optional)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="redis"><code>redis</code></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>redis</code></td>
-<td>Redis image version</td>
-</tr>
-<tr>
-<td><code>port</code></td>
-<td>Exposed port on host machine (optional)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="postgres"><code>postgres</code></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>postgres</code></td>
-<td>PostgreSQL image version</td>
-</tr>
-<tr>
-<td><code>port</code></td>
-<td>Exposed port on host machine (optional)</td>
-</tr>
-<tr>
-<td><code>user</code></td>
-<td>Name of the database user (optional)</td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>Password for the user (optional)</td>
-</tr>
-<tr>
-<td><code>db</code></td>
-<td>Name of the database to create (optional)</td>
-</tr>
-<tr>
-<td><code>lang</code></td>
-<td>Sets the container's <code>LANG</code> env var (optional)</td>
-</tr>
-</tbody>
-</table>
-<hr />
+<h1 id="tutorial">Tutorial</h1>
+<h2 id="basics">Basics</h2>
+<p>Panini works very similiar to <code>make</code>. The configuration file is in the INI
+format. Every section is a command that can be called with <code>panini cmd</code></p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">; Write this to the file `pan.ini`</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">[hello]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">cmd</span><span class="o">=</span><span class="s">printf &quot;hello world\n&quot;</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ panini hello
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>hello world
+</span></code></pre></div>
+<p>One difference to <code>make</code> is that there are different <em>section types</em>. Here is
+an examle using the section type called <code>venv</code>.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[cowsay]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">venv</span><span class="o">=</span><span class="s">pycowsay</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">cmd</span><span class="o">=</span><span class="s">pycowsay {}</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ panini cowsay huh?
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> ______
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&lt; huh? &gt;
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> ------
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        \   ^__^
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>         \  (oo)\_______
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>            (__)\       )\/\
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                ||----w |
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>                ||     ||
+</span></code></pre></div>
+<p><em>Note how <code>{}</code> got replaced with the trailing arguments.</em></p>
+<p>That looks magical at first but with the builtin command <code>getcmd</code> we can
+inspect what is actually happening there.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ panini getcmd cowsay huh?
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>uv run --no-project --with pycowsay -- cowsay &#39;huh?&#39;
+</span></code></pre></div>
+<p>All the section types do is to generate the actual command that is going to be
+executed, based on the users input. You can see all <a href="../drivers/">currently supported
+section types here</a>.</p>
+<h2 id="section-type-declaration">Section Type Declaration</h2>
+<p>Every INI section has a section type. The section type is recognised by the following way:</p>
+<p><strong>Does the section has keys? If yes, the section type is the first key. Else its the section name</strong></p>
+<h3 id="examples">Examples</h3>
+<p>section type: <code>redis</code></p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[redis]</span>
+</span></code></pre></div>
+<p>section type: <code>script</code>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[blah]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">script</span><span class="o">=</span><span class="s">ls</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">via</span><span class="o">=</span><span class="s">blub</span>
+</span></code></pre></div></p>
+<p>Let's look at this error case:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">; wrong</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">[blah]</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">via</span><span class="o">=</span><span class="s">blub</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">script</span><span class="o">=</span><span class="s">ls</span>
+</span></code></pre></div>
+<p>Here the section type would be <code>via</code>, which does not exist.</p>
+<h2 id="the-via-key">The <code>via</code> key</h2>
+<p>Every section type supports the <code>via</code> key, which can be used to chain commands.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">[ssh]</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">cmd</span><span class="o">=</span><span class="s">ssh root@server {}</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">[nix]</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="na">nix</span><span class="o">=</span><span class="s">uv</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="na">via</span><span class="o">=</span><span class="s">ssh</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">[uv]</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="na">cmd</span><span class="o">=</span><span class="s">uv {}</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="na">via</span><span class="o">=</span><span class="s">nix</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">[myscript]</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="na">cmd</span><span class="o">=</span><span class="s">run myscript.py {}</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="na">via</span><span class="o">=</span><span class="s">uv</span>
+</span></code></pre></div>
+<p>Calling <code>panini myscript</code> would run:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ssh root@server nix-shell --packages uv --run &#39;uv run myscript.py&#39;
+</span></code></pre></div>
+<h2 id="the-env-key">The <code>env</code> key</h2>
+<p>The <code>env</code> key is easy to explain. </p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">[envtest]</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="na">cmd</span><span class="o">=</span><span class="s">printenv FOO</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="na">env</span><span class="o">=</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="na">FOO</span><span class="o">=</span><span class="s">123</span>
+</span></code></pre></div>
+<p>leads to:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ panini envtest
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>123
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$ panini getcmd envtest
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>env FOO=123 printenv FOO
+</span></code></pre></div>
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+<li>Every INI section is a command</li>
+<li>Section types are really just templates to build the command</li>
+</ul>
 
 
 

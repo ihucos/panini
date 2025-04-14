@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="drivers/">
+        <link rel="next" href="tutorial/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -315,7 +315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="bluasdf.md" class="md-nav__link">
+      <a href="tutorial/" class="md-nav__link">
         
   
   
@@ -403,12 +403,108 @@
   
   
     <li class="md-nav__item">
-      <a href="blah.md" class="md-nav__link">
+      <a href="section_type_declaration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Section Type Declaration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="global_keys/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Global Keys
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Recipes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="localenvs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local Environment Variables
     
   </span>
   
@@ -500,15 +596,14 @@
 
 <p><img src="assets/panini.png" alt="panini logo" width="175"/></p>
 <h1 id="panini">Panini</h1>
-<p>Panini is a delicious mix of <code>nix</code>, <code>docker</code>, and <code>process-compose</code>, seamlessly
-combined via a simple INI file to create modern development environments with
-ease.</p>
+<p>Panini is a delicious mix of tools like <code>nix</code>, <code>docker</code>, and <code>process-compose</code>. Seamlessly
+combined via a simple INI file they create a modern development environments with ease.</p>
 <p>Or in four words: <em>Rapid Development Environment Managment.</em></p>
 <h2 id="install">Install</h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip install panini
 </span></code></pre></div>
 <h2 id="quickstart">Quickstart</h2>
-<p>Write your config to the <code>pan.ini</code> file.
+<p>Write your own <code>pan.ini</code> file.
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[postgres]</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">postgres</span><span class="o">=</span><span class="s">17.4</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">password</span><span class="o">=</span><span class="s">devpass</span>
@@ -527,22 +622,23 @@ ease.</p>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="k">[uv]</span>
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="na">cmd</span><span class="o">=</span><span class="s">uv {}</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="k">[up]</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="na">services</span><span class="o">=</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="na">postgres</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="na">redis</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="na">app</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="na">via</span><span class="o">=</span><span class="s">devbox</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="k">[help]</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="na">help</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">Manage testapp</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="na">app</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">Start testapp</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="na">devbox</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">Run something inside nix</span>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="na">postgres</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">Start postgrees server</span>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="na">redis</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">Start redis server</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="na">up</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">Run app and dependencies.</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="na">uv</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">Run uv</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="na">via</span><span class="o">=</span><span class="s">devbox</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">[up]</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="na">services</span><span class="o">=</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="na">postgres</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="na">redis</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="na">app</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="na">via</span><span class="o">=</span><span class="s">devbox</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="k">[help]</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="na">help</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">Manage testapp</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="na">app</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">Start testapp</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="na">devbox</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">Run something inside nix</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="na">postgres</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">Start postgrees server</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="na">redis</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">Start redis server</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="na">up</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">Run app and dependencies.</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="na">uv</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">Run uv</span>
 </span></code></pre></div></p>
 <p>Now run any of the defined commands, for example:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ panini up
@@ -551,17 +647,9 @@ ease.</p>
 <h2 id="congratulations">Congratulations</h2>
 <p><strong>You got</strong></p>
 <ul>
-<li>An isolated, shareable development environment with minimal dependencies.</li>
-<li>A handy way to organize development specific tasks</li>
+<li>An isolated, unified, pinnable development environment with minimal dependencies.</li>
+<li>A powerful way to organize development specific tasks</li>
 <li>Run your app and dependant services in one command.</li>
-</ul>
-<p><strong>Forget the days of</strong></p>
-<ul>
-<li>"It works on my machine"</li>
-<li>Containerizing everything, so it fits into <code>docker-compose</code></li>
-<li>Slow test runs because of docker for mac (use nix).</li>
-<li>Huge YAML files nobody understands.</li>
-<li>I weird collection of weird files. One weird file for everything is enough.</li>
 </ul>
 
 
