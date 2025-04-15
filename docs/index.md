@@ -16,7 +16,7 @@ Or in four words: *Rapid Development Environment Managment.*
 ## Install
 
 ```
-pip install panini
+pip install panini-compose
 ```
 
 ## Quickstart

@@ -1,5 +1,5 @@
 [project]
-name = "panini"
+name = "panini-compose"
 version = "0.1.0"
 description = "Compose project tasks"
 readme = "README.md"
