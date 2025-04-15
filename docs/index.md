@@ -7,7 +7,7 @@
 
 
 Panini is a delicious mix of tools like `nix`, `docker`, and `process-compose`. Seamlessly
-combined via a simple INI file they create a modern development environments with ease.
+combined via a simple INI file they create modern development environments with ease.
 
 Or in four words: *Rapid Development Environment Managment.*
 
