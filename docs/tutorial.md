@@ -3,7 +3,7 @@
 
 ## Basics
 
-Panini works very similiar to `make`. The configuration file is in the INI
+Panini is very similiar to `make`. The configuration file is in the INI
 format. Every section is a command that can be called with `panini cmd`
 
 

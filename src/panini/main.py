@@ -1,4 +1,5 @@
 import sys
+import os
 import subprocess
 import configparser
 
@@ -11,6 +12,10 @@ def main():
         run = sys.argv[1]
     except IndexError:
         run = "help"
+
+    if not os.path.exists("pan.ini"):
+        print(f"panini error: No pan.ini file found in current working directory.")
+        sys.exit(1)
 
     try:
         init_config()
