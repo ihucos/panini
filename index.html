@@ -20,7 +20,7 @@
     
     
       
-        <title>Panini</title>
+        <title>panini</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Panini" class="md-header__button md-logo" aria-label="Panini" data-md-component="logo">
+    <a href="." title="panini" class="md-header__button md-logo" aria-label="panini" data-md-component="logo">
       
   <img src="assets/panini.png" alt="logo">
 
@@ -99,7 +99,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Panini
+            panini
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -195,12 +195,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Panini" class="md-nav__button md-logo" aria-label="Panini" data-md-component="logo">
+    <a href="." title="panini" class="md-nav__button md-logo" aria-label="panini" data-md-component="logo">
       
   <img src="assets/panini.png" alt="logo">
 
     </a>
-    Panini
+    panini
   </label>
   
     <div class="md-nav__source">
@@ -274,27 +274,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
+  <a href="#step-1-install" class="md-nav__link">
     <span class="md-ellipsis">
-      Install
+      Step 1 - Install
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#quickstart" class="md-nav__link">
+  <a href="#step-2-write-a-panini-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Quickstart
+      Step 2 - Write a pan.ini file
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#congratulations" class="md-nav__link">
+  <a href="#step-3-run-panini" class="md-nav__link">
     <span class="md-ellipsis">
-      Congratulations
+      Step 3 - Run panini
     </span>
   </a>
   
@@ -572,27 +572,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
+  <a href="#step-1-install" class="md-nav__link">
     <span class="md-ellipsis">
-      Install
+      Step 1 - Install
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#quickstart" class="md-nav__link">
+  <a href="#step-2-write-a-panini-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Quickstart
+      Step 2 - Write a pan.ini file
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#congratulations" class="md-nav__link">
+  <a href="#step-3-run-panini" class="md-nav__link">
     <span class="md-ellipsis">
-      Congratulations
+      Step 3 - Run panini
     </span>
   </a>
   
@@ -618,15 +618,13 @@
 
 
 <p><img src="assets/panini.png" alt="panini logo" width="175"/></p>
-<h1 id="panini">Panini</h1>
-<p>Panini is a delicious mix of tools like <code>nix</code>, <code>docker</code>, and <code>process-compose</code>. Seamlessly
-combined via a simple INI file they create modern development environments with ease.</p>
-<p>Or in four words: <em>Rapid Development Environment Managment.</em></p>
-<h2 id="install">Install</h2>
+<h1 id="panini">panini</h1>
+<p>Panini is a powerful yet simple way to rapidly define isolated, pinned, and
+unified development environments.</p>
+<h2 id="step-1-install">Step 1 - Install</h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip install panini-compose
 </span></code></pre></div>
-<h2 id="quickstart">Quickstart</h2>
-<p>Write your own <code>pan.ini</code> file.
+<h2 id="step-2-write-a-panini-file">Step 2 - Write a <code>pan.ini</code> file</h2>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[postgres]</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">postgres</span><span class="o">=</span><span class="s">17.4</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">password</span><span class="o">=</span><span class="s">devpass</span>
@@ -662,18 +660,11 @@ combined via a simple INI file they create modern development environments with 
 </span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="na">redis</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">Start redis server</span>
 </span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="na">up</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">Run app and dependencies.</span>
 </span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="na">uv</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">Run uv</span>
-</span></code></pre></div></p>
-<p>Now run any of the defined commands, for example:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ panini up
+</span></code></pre></div>
+<h2 id="step-3-run-panini">Step 3 - Run panini</h2>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ panini up
 </span></code></pre></div>
 <img src="assets/process-compose.png" alt="process-compose terminal" width="width: 100%;"/></p>
-<h2 id="congratulations">Congratulations</h2>
-<p><strong>You got</strong></p>
-<ul>
-<li>An isolated, unified, pinnable development environment with minimal dependencies.</li>
-<li>A powerful way to organize development specific tasks</li>
-<li>Run your app and dependant services in one command.</li>
-</ul>
 
 
 

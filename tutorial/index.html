@@ -22,7 +22,7 @@
     
     
       
-        <title>Tutorial - Panini</title>
+        <title>Tutorial - panini</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Panini" class="md-header__button md-logo" aria-label="Panini" data-md-component="logo">
+    <a href=".." title="panini" class="md-header__button md-logo" aria-label="panini" data-md-component="logo">
       
   <img src="../assets/panini.png" alt="logo">
 
@@ -101,7 +101,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Panini
+            panini
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -197,12 +197,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Panini" class="md-nav__button md-logo" aria-label="Panini" data-md-component="logo">
+    <a href=".." title="panini" class="md-nav__button md-logo" aria-label="panini" data-md-component="logo">
       
   <img src="../assets/panini.png" alt="logo">
 
     </a>
-    Panini
+    panini
   </label>
   
     <div class="md-nav__source">
@@ -312,21 +312,6 @@
       Section Type Declaration
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Section Type Declaration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -622,21 +607,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Section Type Declaration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -687,7 +657,7 @@
 
 <h1 id="tutorial">Tutorial</h1>
 <h2 id="basics">Basics</h2>
-<p>Panini works very similiar to <code>make</code>. The configuration file is in the INI
+<p>Panini is very similiar to <code>make</code>. The configuration file is in the INI
 format. Every section is a command that can be called with <code>panini cmd</code></p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">; Write this to the file `pan.ini`</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -703,7 +673,7 @@ an examle using the section type called <code>venv</code>.</p>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">venv</span><span class="o">=</span><span class="s">pycowsay</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">cmd</span><span class="o">=</span><span class="s">pycowsay {}</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ panini cowsay huh?
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ panini pycowsay huh?
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> ______
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&lt; huh? &gt;
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> ------
@@ -723,56 +693,39 @@ inspect what is actually happening there.</p>
 executed, based on the users input. You can see all <a href="../drivers/">currently supported
 section types here</a>.</p>
 <h2 id="section-type-declaration">Section Type Declaration</h2>
-<p>Every INI section has a section type. The section type is recognised by the following way:</p>
-<p><strong>Does the section has keys? If yes, the section type is the first key. Else its the section name</strong></p>
-<h3 id="examples">Examples</h3>
-<p>section type: <code>redis</code></p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[redis]</span>
-</span></code></pre></div>
-<p>section type: <code>script</code>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[blah]</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">script</span><span class="o">=</span><span class="s">ls</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">via</span><span class="o">=</span><span class="s">blub</span>
-</span></code></pre></div></p>
-<p>Let's look at this error case:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">; wrong</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">[blah]</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">via</span><span class="o">=</span><span class="s">blub</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">script</span><span class="o">=</span><span class="s">ls</span>
-</span></code></pre></div>
-<p>Here the section type would be <code>via</code>, which does not exist.</p>
+<p><a href="../section_type_declaration">Consult here how section types are defined</a></p>
 <h2 id="the-via-key">The <code>via</code> key</h2>
 <p>Every section type supports the <code>via</code> key, which can be used to chain commands.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">[ssh]</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">cmd</span><span class="o">=</span><span class="s">ssh root@server {}</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">[nix]</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="na">nix</span><span class="o">=</span><span class="s">uv</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="na">via</span><span class="o">=</span><span class="s">ssh</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">[uv]</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="na">cmd</span><span class="o">=</span><span class="s">uv {}</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="na">via</span><span class="o">=</span><span class="s">nix</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">[myscript]</span>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="na">cmd</span><span class="o">=</span><span class="s">run myscript.py {}</span>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="na">via</span><span class="o">=</span><span class="s">uv</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[ssh]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="na">cmd</span><span class="o">=</span><span class="s">ssh root@server {}</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">[nix]</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="na">nix</span><span class="o">=</span><span class="s">uv</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="na">via</span><span class="o">=</span><span class="s">ssh</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">[uv]</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="na">cmd</span><span class="o">=</span><span class="s">uv {}</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="na">via</span><span class="o">=</span><span class="s">nix</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">[myscript]</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="na">cmd</span><span class="o">=</span><span class="s">run myscript.py {}</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="na">via</span><span class="o">=</span><span class="s">uv</span>
 </span></code></pre></div>
 <p>Calling <code>panini myscript</code> would run:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ssh root@server nix-shell --packages uv --run &#39;uv run myscript.py&#39;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh root@server nix-shell --packages uv --run &#39;uv run myscript.py&#39;
 </span></code></pre></div>
 <h2 id="the-env-key">The <code>env</code> key</h2>
 <p>The <code>env</code> key is easy to explain. </p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">[envtest]</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="na">cmd</span><span class="o">=</span><span class="s">printenv FOO</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="na">env</span><span class="o">=</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="na">FOO</span><span class="o">=</span><span class="s">123</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">[envtest]</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">cmd</span><span class="o">=</span><span class="s">printenv FOO</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">env</span><span class="o">=</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="na">FOO</span><span class="o">=</span><span class="s">123</span>
 </span></code></pre></div>
 <p>leads to:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ panini envtest
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>123
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$ panini getcmd envtest
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>env FOO=123 printenv FOO
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ panini envtest
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>123
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>$ panini getcmd envtest
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>env FOO=123 printenv FOO
 </span></code></pre></div>
 <h2 id="conclusion">Conclusion</h2>
 <ul>
