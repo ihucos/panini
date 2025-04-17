@@ -30,7 +30,7 @@ cmd=pycowsay {}
 ```
 
 ```
-$ panini cowsay huh?
+$ panini pycowsay huh?
  ______
 < huh? >
  ------
