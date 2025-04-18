@@ -8,8 +8,8 @@ unified development environments.
 ```ini
 ; pan.ini file
 
-[hello]
-cmd=hello world
+[hello-world]
+cmd=printf "hello world\n"
 
 [cowsay]
 nix=cowsay
@@ -17,5 +17,16 @@ cmd=cowsay {}
 ```
 
 ```
-$ panini cowsay hello
+$ panini hello-world
+hello world
+
+$ panini cowsay hi
+ ____
+< hi >
+ ----
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
 ```
