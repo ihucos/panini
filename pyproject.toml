@@ -1,9 +1,9 @@
 [project]
 name = "panini-compose"
-version = "0.1.1"
+version = "0.1.2"
 description = "Compose project tasks"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.8"
 dependencies = []
 keywords=["docker compose", "process management", "local development", "docker"]
 

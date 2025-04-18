@@ -2,10 +2,13 @@
 
 <img src="assets/panini.png" alt="panini logo" width="175"/>
 
+**\*Currently in Beta\***
+
 # panini
 
 Panini is a powerful yet simple way to rapidly define isolated, pinned, and
 unified development environments.
+
 
 
 
