@@ -1,6 +1,6 @@
 # panini
 
-**Check out the docs here**: https://ihucos.github.io/panini/
+# Check out the docs here: https://ihucos.github.io/panini/
 
 Panini is a powerful yet simple way to rapidly define isolated, pinned, and
 unified development environments.
@@ -30,3 +30,6 @@ $ panini cowsay hi
                 ||----w |
                 ||     ||
 ```
+
+
+## Check out the docs here: https://ihucos.github.io/panini/
